@@ -33,3 +33,18 @@
         }
     }
 }
+
+@media(max-width: 767px) {
+    
+.image {
+        min-height: 40vh;
+    }
+
+    .form-content {
+        min-height: 40vh;
+
+        form {
+            margin: 0;
+        }
+    }
+}
