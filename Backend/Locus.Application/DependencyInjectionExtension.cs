@@ -1,6 +1,7 @@
 ﻿using Locus.Application.Mappers;
 using Locus.Application.Services.Cryptography;
 using Locus.Application.Services.User;
+using Locus.Application.Session;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,6 +18,8 @@ namespace Locus.Application
 
         private static void AddServices(IServiceCollection services)
         {
+            services.AddScoped<IUserSession, UserSession>();
+
             services.AddScoped<IUserService, UserService>();
         }
 

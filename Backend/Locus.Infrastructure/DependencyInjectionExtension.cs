@@ -55,6 +55,7 @@ namespace Locus.Infrastructure
             var signingKey = configuration.GetSection("Settings:Jwt:SigningKey").Value;
 
             services.AddScoped<IAccessTokenGenerator>(opt => new AccessTokenGenerator(expirationTimeMinutes, signingKey!));
+            services.AddScoped<IAccessTokenValidator>(opt => new AccessTokenValidator(signingKey!));
         }
     }
 }

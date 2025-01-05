@@ -1,6 +1,5 @@
 ﻿using Communication.Requests.User;
 using Communication.Responses.User;
-using Locus.Domain.Enums;
 
 namespace Locus.Application.Services.User
 {
@@ -8,5 +7,6 @@ namespace Locus.Application.Services.User
     {
         public Task<ResponseRegisteredUserJson> Register(RequestUserJson request);
         public Task<ResponseRegisteredUserJson> Login(RequestLoginJson request);
+        public Task<ResponseUserJson> Update(RequestUserJson request);
     }
 }

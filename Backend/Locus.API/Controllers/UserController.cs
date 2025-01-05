@@ -1,5 +1,6 @@
 ﻿using Communication.Requests.User;
 using Communication.Responses.User;
+using Locus.API.Attributes;
 using Locus.Application.Services.User;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,6 +21,15 @@ namespace Locus.API.Controllers
         public async Task<IActionResult> Login([FromServices] IUserService userService, [FromBody] RequestLoginJson request)
         {
             var result = await userService.Login(request);
+            return Ok(result);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status200OK)]
+        [AuthenticatedUser]
+        public async Task<IActionResult> Update([FromServices] IUserService userService, [FromBody] RequestUserJson request)
+        {
+            var result = await userService.Update(request);
             return Ok(result);
         }
     }

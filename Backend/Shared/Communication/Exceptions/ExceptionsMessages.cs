@@ -13,5 +13,7 @@
         public const string TYPE_USER_INVALID = "O tipo do usuário é inválido.";
         public const string TYPE_EMPTY = "O tipo do usuário é obrigatório.";
         public const string INVALID_LOGIN = "E-mail e/ou senha inválidos.";
+        public const string INVALID_TOKEN = "Token inválido.";
+        public const string UNAUTHORIZED_USER = "Usuário não possui permissão para acessar o recurso.";
     }
 }

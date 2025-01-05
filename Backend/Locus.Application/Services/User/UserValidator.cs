@@ -5,9 +5,9 @@ using Locus.Domain.Enums;
 
 namespace Locus.Application.Services.User
 {
-    public class UserValidator : AbstractValidator<RequestUserJson>
+    public class BaseUserValidator : AbstractValidator<RequestUserJson>
     {
-        public UserValidator()
+        public BaseUserValidator()
         {
             RuleFor(user => user.Name)
                 .NotEmpty().WithMessage(ExceptionsMessages.NAME_EMPTY)
@@ -18,13 +18,19 @@ namespace Locus.Application.Services.User
                 .EmailAddress().WithMessage(ExceptionsMessages.EMAIL_INVALID)
                 .MaximumLength(250).WithMessage(ExceptionsMessages.EMAIL_MAXIMUM_CHARACTERS);
 
-            RuleFor(user => user.Password.Length)
-                .GreaterThanOrEqualTo(6).WithMessage(ExceptionsMessages.PASSWORD_MIN_LENGTH);
-
             RuleFor(user => user.Type)
                 .NotEmpty().WithMessage(ExceptionsMessages.TYPE_EMPTY)
                 .Must(user => Enum.TryParse<UserTypeEnum>(user, true, out _))
                 .WithMessage(ExceptionsMessages.TYPE_USER_INVALID);
+        }
+    }
+
+    public class UserCreateValidator : BaseUserValidator
+    {
+        public UserCreateValidator()
+        {
+            RuleFor(user => user.Password.Length)
+                .GreaterThanOrEqualTo(6).WithMessage(ExceptionsMessages.PASSWORD_MIN_LENGTH);
         }
     }
 }
