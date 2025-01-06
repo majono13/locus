@@ -8,5 +8,6 @@ namespace Locus.Application.Services.User
         public Task<ResponseRegisteredUserJson> Register(RequestUserJson request);
         public Task<ResponseRegisteredUserJson> Login(RequestLoginJson request);
         public Task<ResponseUserJson> Update(RequestUserJson request);
+        public Task<ResponseUserJson> GetById(Guid id);
     }
 }

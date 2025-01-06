@@ -9,7 +9,7 @@ namespace Locus.API.Controllers
     public class UserController : LocusControlerBase
     {
         [HttpPost]
-        [ProducesResponseType(typeof (ResponseRegisteredUserJson), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status201Created)]
         public async Task<IActionResult> Register([FromServices] IUserService userService, [FromBody] RequestUserJson request)
         {
             var result = await userService.Register(request);
@@ -17,7 +17,7 @@ namespace Locus.API.Controllers
         }
 
         [HttpPost("login")]
-        [ProducesResponseType(typeof (ResponseRegisteredUserJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status200OK)]
         public async Task<IActionResult> Login([FromServices] IUserService userService, [FromBody] RequestLoginJson request)
         {
             var result = await userService.Login(request);
@@ -25,11 +25,20 @@ namespace Locus.API.Controllers
         }
 
         [HttpPut]
-        [ProducesResponseType(typeof(ResponseRegisteredUserJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseUserJson), StatusCodes.Status200OK)]
         [AuthenticatedUser]
         public async Task<IActionResult> Update([FromServices] IUserService userService, [FromBody] RequestUserJson request)
         {
             var result = await userService.Update(request);
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(ResponseUserJson), StatusCodes.Status200OK)]
+        [AuthenticatedUser]
+        public async Task<IActionResult> GetById([FromServices] IUserService userService, [FromRoute] string id)
+        {
+            var result = await userService.GetById(Guid.Parse(id));
             return Ok(result);
         }
     }

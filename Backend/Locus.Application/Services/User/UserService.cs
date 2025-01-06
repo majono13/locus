@@ -109,5 +109,12 @@ namespace Locus.Application.Services.User
 
             return _mapper.Map<ResponseUserJson>(newUserInfo);
         }
+
+        public async Task<ResponseUserJson> GetById(Guid id)
+        {
+            var user = await _userRepository.GetById(id);
+
+            return _mapper.Map<ResponseUserJson>(user);
+        }
     }
 }

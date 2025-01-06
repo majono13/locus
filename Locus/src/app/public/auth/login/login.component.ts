@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { UserService } from 'src/app/core/entities/user/User.service';
+import { StorageKeyEnum } from 'src/app/core/enums/storage-keys.enum';
 import { ILoginResponse } from 'src/app/core/models/user/login-response.model';
+import { IUser } from 'src/app/core/models/user/user.model';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
@@ -18,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private utilsService: UtilsService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
     ) { 
     this.form = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
@@ -42,7 +46,18 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private doAuthenticated(loginResponse: ILoginResponse) {
+    private doAuthenticated(loginResponse: ILoginResponse) {
     console.log(loginResponse)
+    this.userService.getById(loginResponse.id)
+    .pipe(takeUntil(this.destroy$))
+    .subscribe({
+      next: (response) => this.setUserSession(loginResponse, response)
+    });
+  }
+
+  private setUserSession(loginResponse: ILoginResponse, user: IUser) {
+    this.utilsService.setStorage(StorageKeyEnum.TOKEN, loginResponse.token);
+    this.utilsService.setStorage(StorageKeyEnum.ACTIVE, JSON.stringify(user));
+    this.router.navigate(['public', 'commun']);
   }
 }

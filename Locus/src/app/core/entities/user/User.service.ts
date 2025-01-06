@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { ILoginResponse } from '../../models/user/login-response.model';
 import { Observable, catchError, throwError } from 'rxjs';
 import { UtilsService } from 'src/app/shared/services/utils.service';
+import { IUser } from '../../models/user/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,11 @@ constructor(
 
     this.utilsService.addMessage({ severity: "error", summary: "Ocorreu um erro ao processar a requisição", detail: message });
     return throwError(() => new Error("Mensagem de erro!"));
+  }
+
+  getById(id: string) {
+    return this.http.get<IUser>(`${this.entityUrl}/${id}`)
+    .pipe(catchError(error => this.doError(error)));
   }
 
 }

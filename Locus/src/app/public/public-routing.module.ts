@@ -5,7 +5,8 @@ import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   { path: '', component:  CatalogComponent},
-  { path: 'login', component: AuthComponent }
+  { path: 'login', component: AuthComponent },
+  { path: 'commun', loadChildren: () => import('./user-commun/user-commun.module').then(m => m.UserCommunModule) }
 ];
 
 @NgModule({

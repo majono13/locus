@@ -5,11 +5,13 @@ import { RouterModule } from '@angular/router';
 import { PrimengModule } from './primeng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputValidatorComponent } from './components/input-validator/input-validator.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
   declarations: [
     InputValidatorComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { InputValidatorComponent } from './components/input-validator/input-vali
     PrimengModule,
     FormsModule,
     ReactiveFormsModule,
-    InputValidatorComponent
+    InputValidatorComponent,
+    HomeComponent
   ]
 })
 export class SharedModule { }
