@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
+import { ToastModule } from "primeng/toast";
 
 @NgModule({
   declarations: [],
@@ -10,12 +11,14 @@ import { DividerModule } from 'primeng/divider';
     CommonModule,
     InputTextModule,
     ButtonModule,
-    DividerModule
+    DividerModule,
+    ToastModule
   ],
   exports: [
     InputTextModule,
     ButtonModule,
-    DividerModule
+    DividerModule,
+    ToastModule
   ]
 })
 export class PrimengModule { }

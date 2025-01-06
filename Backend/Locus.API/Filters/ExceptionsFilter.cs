@@ -26,8 +26,8 @@ namespace Locus.API.Filters
 
         private static void ThrowUnknowException(ExceptionContext context)
         {
-            //context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            //context.Result = new ObjectResult(new ResponseErrorJson(ExceptionsMessages.UNKNOW_ERRROR));
+            context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Result = new ObjectResult(new ResponseErrorJson(ExceptionsMessages.UNKNOW_ERRROR));
         }
     }
 }
