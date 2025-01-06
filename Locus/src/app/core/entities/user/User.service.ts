@@ -16,7 +16,7 @@ export class UserService {
 
 constructor(
   private http: HttpClient,
-  private utilsService: UtilsService
+  private utilsService: UtilsService,
   ) { }
 
   login(loginData: ILogin): Observable<ILoginResponse> {
@@ -41,5 +41,4 @@ constructor(
     return this.http.get<IUser>(`${this.entityUrl}/${id}`)
     .pipe(catchError(error => this.doError(error)));
   }
-
 }

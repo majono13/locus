@@ -3,6 +3,10 @@
         <img src="../../../../../assets/images/logo.svg" alt="Logo Locus">
     </div>
     <div class="navbar-items">
-        <div routerLink="/public/login" class="pointer item" routerLinkActive="active">Entrar</div>
+        <div routerLink="/public/login" class="pointer item" routerLinkActive="active" *ngIf="!currentUser">Entrar</div>
+        <div class="pointer item d-flex align-items-center" routerLinkActive="active" *ngIf="currentUser" (click)="onLogout()">
+            <span>Sair</span>
+            <i class="pi pi-sign-out pl-3"></i>
+        </div>
     </div>
 </div>

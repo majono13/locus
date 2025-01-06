@@ -47,16 +47,16 @@ export class LoginComponent implements OnInit {
   }
 
     private doAuthenticated(loginResponse: ILoginResponse) {
-    console.log(loginResponse)
+    this.utilsService.setStorage(StorageKeyEnum.TOKEN, loginResponse.token);
+
     this.userService.getById(loginResponse.id)
     .pipe(takeUntil(this.destroy$))
     .subscribe({
-      next: (response) => this.setUserSession(loginResponse, response)
+      next: (response) => this.setUserSession(response)
     });
   }
 
-  private setUserSession(loginResponse: ILoginResponse, user: IUser) {
-    this.utilsService.setStorage(StorageKeyEnum.TOKEN, loginResponse.token);
+  private setUserSession(user: IUser) {
     this.utilsService.setStorage(StorageKeyEnum.ACTIVE, JSON.stringify(user));
     this.router.navigate(['public', 'commun']);
   }

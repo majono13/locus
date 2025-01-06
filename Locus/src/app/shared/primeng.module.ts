@@ -4,6 +4,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { ToastModule } from "primeng/toast";
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [],
@@ -12,13 +13,15 @@ import { ToastModule } from "primeng/toast";
     InputTextModule,
     ButtonModule,
     DividerModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
   exports: [
     InputTextModule,
     ButtonModule,
     DividerModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ]
 })
 export class PrimengModule { }

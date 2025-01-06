@@ -9,6 +9,7 @@
     --whiteColor: #f3fbfd;
     --linkColor: #85b2f9;
     --dangerColor: #f38e85;
+    --borderColor: #1e375c;
 }
 
 * {
@@ -80,20 +81,29 @@ body {
             background: var(--whiteColor) !important;
             color: var(--darkText) !important;
         }
-
-        .p-button {
-         background: var(--light) !important;
-         border-color: var(--light) !important;
-         color: var(--text-color);
-         &:hover {
-            color: var(--text-color);
-        }
-        }
     }
 }
 
+.p-button {
+    background: var(--light) !important;
+    border-color: var(--light) !important;
+    color: var(--text-color);
+    &:hover {
+        color: var(--text-color);
+    }
+}
+
+.p-button-text {
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+.text-danger {
+    color: var(--dangerColor) !important;
+}
+
 .custom-border {
-    border: 1.5px solid #1e375c;
+    border: 1.5px solid var(--borderColor);
     border-radius: 1rem;
 }
 
@@ -107,4 +117,11 @@ body {
     &:hover {
         border-color: var(--linkColor);
     }
+}
+
+.pl-3 {
+    padding-left: 1rem;
+}
+.ml-3 {
+    margin-left: 1rem;
 }
