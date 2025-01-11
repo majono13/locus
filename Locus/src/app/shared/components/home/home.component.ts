@@ -10,6 +10,10 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {
+      const teste = document.querySelector("#path22") as any;
+      console.log(teste.getTotalLength())
+    }, 2000)
   }
 
 }

@@ -1,0 +1,65 @@
+.home {
+    width: 100%;
+    height: calc(100vh - 6rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.svg {
+    #path22 {
+        stroke-dasharray: 10753;
+        stroke-dashoffset: 10753;
+        animation: draw 2s ease-in-out forwards;
+    }
+    
+    #path20, #path26, #path24 {
+        opacity: 0;
+        animation: entrance 1s ease 2s forwards;
+    }
+    
+    #path18 {
+        opacity: 0;
+        animation: opacityAnimation 0.5s ease 0.5s forwards;
+    }
+}
+
+.title {
+    margin-top: 1rem;
+    h1 {
+        margin-left: 1rem;
+        font-size: 2.5rem;
+    }
+}
+
+.container {
+    position: relative;
+    width: 200px;
+    height: 300px;
+}
+
+@keyframes entrance {
+    from {
+        transform: translateY(300px);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes opacityAnimation {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}

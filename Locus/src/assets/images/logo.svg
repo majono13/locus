@@ -15,7 +15,7 @@
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
      id="defs6" /><g
-     transform="matrix(1.1,0,0,-1.1,0,1000)" style="transform: matrix(1, 0, 0, -1.15, 0, 1200) translate(-250px, -250px)"
+     transform="matrix(1.1,0,0,-1.1,0,1000)" style="transform: matrix(1.1, 0, 0, -1.15, 0, 1200) translate(-250px, -250px)"
      id="g10"><g
        transform="scale(0.43)"
        id="g12"><path
