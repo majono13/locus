@@ -10,7 +10,7 @@ import { StorageKeyEnum } from 'src/app/core/enums/storage-keys.enum';
 export class SessionDataService {
 
   user?: IUser;
-  userSub$ = new BehaviorSubject<IUser | null>(null);
+  readonly userSub$ = new BehaviorSubject<IUser | null>(null);
 
   constructor(private utilsService: UtilsService) {
     this.userSub$.subscribe(user => this.user = user);

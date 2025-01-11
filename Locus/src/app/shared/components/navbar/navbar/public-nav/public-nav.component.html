@@ -2,11 +2,17 @@
     <div class="img pointer" routerLink="/public" routerLinkActive="active">
         <img src="../../../../../assets/images/logo.svg" alt="Logo Locus">
     </div>
-    <div class="navbar-items">
+    <div class="navbar-items" *ngIf="!isMobile">
         <div routerLink="/public/login" class="pointer item" routerLinkActive="active" *ngIf="!currentUser">Entrar</div>
         <div class="pointer item d-flex align-items-center" routerLinkActive="active" *ngIf="currentUser" (click)="onLogout()">
             <span>Sair</span>
             <i class="pi pi-sign-out pl-3"></i>
+        </div>
+    </div>
+
+    <div *ngIf="isMobile">
+        <div class="pointer menu-div" (click)="handleVisibilityMenu()">
+            <div class="menu-icon" [ngClass]="{'menu-icon-open': menuOpen}"></div>
         </div>
     </div>
 </div>

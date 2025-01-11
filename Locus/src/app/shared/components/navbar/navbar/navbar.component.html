@@ -1,3 +1,3 @@
 <nav>
-    <app-public-nav [currentUser]="user"></app-public-nav>
+    <app-public-nav [currentUser]="user" (onMenuClick)="emitOnMenuClick($event)"></app-public-nav>
 </nav>

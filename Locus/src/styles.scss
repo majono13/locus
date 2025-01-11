@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --primaryColor: #071426;
+    --primaryColor: #0e1d31;
     --secondaryColor: #040d19;
     --font: "Montserrat", serif;
     --light: #53a098;
@@ -10,6 +10,7 @@
     --linkColor: #85b2f9;
     --dangerColor: #f38e85;
     --borderColor: #1e375c;
+    --hoverColor: #0B1625;
 }
 
 * {
@@ -124,4 +125,13 @@ body {
 }
 .ml-3 {
     margin-left: 1rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+
+.pl-2 {
+    padding-left: 0.5rem;
 }

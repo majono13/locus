@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { IUser } from 'src/app/core/models/user/user.model';
 import { SessionDataService } from 'src/app/shared/services/sessionData.service';
@@ -11,6 +11,7 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
+  @Output() onMenuClick = new EventEmitter<boolean>(false);
   user?: IUser;
   private destroy$ = new Subject<void>();
 
@@ -26,6 +27,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.utilsService.unsubscribe(this.destroy$);
+  }
+
+  emitOnMenuClick(event: boolean) {
+    this.onMenuClick.emit(event);
   }
 
 }

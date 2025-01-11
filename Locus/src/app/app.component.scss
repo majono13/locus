@@ -1,0 +1,24 @@
+.main {
+    background: var(--primaryColor);
+    min-height: calc(100vh - 6rem);
+    margin-top: 1rem;
+    width: 100vw;
+    border: 1px solid var(--borderColor);
+    border-radius: 0.5rem;
+}
+
+.with-siderbar {
+    width: calc(100vw - 282px);
+    margin-left: 266px;
+}
+
+@media(max-width:992px) {
+    .content {
+        display: flex;
+        justify-content: center;
+    }
+    .main, .with-siderbar {
+        width: calc(100vw - 2rem);
+        margin: 1rem 0 0 0;
+    }
+}

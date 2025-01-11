@@ -6,12 +6,14 @@ import { PrimengModule } from './primeng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputValidatorComponent } from './components/input-validator/input-validator.component';
 import { HomeComponent } from './components/home/home.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     InputValidatorComponent,
-    HomeComponent
+    HomeComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { HomeComponent } from './components/home/home.component';
     FormsModule,
     ReactiveFormsModule,
     InputValidatorComponent,
-    HomeComponent
+    HomeComponent,
+    SidebarComponent
   ]
 })
 export class SharedModule { }

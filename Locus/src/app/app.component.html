@@ -1,6 +1,11 @@
-<app-navbar></app-navbar>
+<app-navbar (onMenuClick)="handleVisibilitySidebar()"></app-navbar>
 <div>
-    <router-outlet></router-outlet>
+  <app-sidebar *ngIf="showSidebar"></app-sidebar>
+    <div class="content">
+      <section [ngClass]="{'main': isLogged, 'with-siderbar': showSidebar}">
+        <router-outlet></router-outlet>
+      </section>
+    </div>
 </div>
 
 <p-toast
