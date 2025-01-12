@@ -7,7 +7,7 @@
             <div routerLink="/public/login" class="pointer item" routerLinkActive="active" *ngIf="!user">Entrar</div>
     
             <div class="pointer item d-flex align-items-center" *ngIf="user" (click)="menu.toggle($event)">
-                <span>{{ user?.name }}</span>
+                <div class="user-name">{{ user?.name }}</div>
                 <i class="pi pi-chevron-down pl-2"></i>
             </div>
         </div>
