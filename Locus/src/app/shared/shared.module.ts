@@ -7,31 +7,35 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputValidatorComponent } from './components/input-validator/input-validator.component';
 import { HomeComponent } from './components/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AccountComponent } from './components/account/account.component';
+import { GenericModalComponent } from './components/generic-modal/generic-modal.component';
 
 
 @NgModule({
   declarations: [
     InputValidatorComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    AccountComponent,
+    GenericModalComponent
   ],
   imports: [
     CommonModule,
-    NavbarModule,
     RouterModule,
     PrimengModule,
     FormsModule,
     ReactiveFormsModule,
   ],
   exports: [
-    NavbarModule,
     RouterModule,
     PrimengModule,
     FormsModule,
     ReactiveFormsModule,
     InputValidatorComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    AccountComponent,
+    GenericModalComponent
   ]
 })
 export class SharedModule { }

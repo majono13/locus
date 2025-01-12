@@ -6,39 +6,44 @@ import { ILoginResponse } from '../../models/user/login-response.model';
 import { Observable, catchError, throwError } from 'rxjs';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 import { IUser } from '../../models/user/user.model';
+import { EntityService } from '../entity.service';
+import { StorageKeyEnum } from '../../enums/storage-keys.enum';
+import { SessionDataService } from 'src/app/shared/services/sessionData.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-
-  readonly entityUrl = `${environment.URL_API}/user`;
+export class UserService extends EntityService<IUser> {
 
 constructor(
-  private http: HttpClient,
-  private utilsService: UtilsService,
-  ) { }
+  protected override http: HttpClient,
+  protected override utilsService: UtilsService,
+  private sessionData: SessionDataService,
+  private router: Router
+  ) { 
+    super(http, utilsService, '/user')
+  }
 
   login(loginData: ILogin): Observable<ILoginResponse> {
     return this.http.post<ILoginResponse>(`${this.entityUrl}/login`, loginData)
     .pipe(catchError(error => this.doError(error)));
   }
-
-  private doError(error: HttpErrorResponse ) {
-    let message = "Erro desconhecido.";
-    
-    if (error?.error?.errors && Array.isArray(error?.error?.errors)) {
-      message = error?.error?.errors.join("<br>");
-    } else if (message = error?.error?.errors) {
-      message = error?.error?.errors;
-    }
-
-    this.utilsService.addMessage({ severity: "error", summary: "Ocorreu um erro ao processar a requisição", detail: message });
-    return throwError(() => new Error("Mensagem de erro!"));
+  
+  updateUserInfo(data: IUser) {
+    return this.http.put<IUser>(`${this.entityUrl}`, data)
+    .pipe(catchError(error => this.doError(error)));
   }
 
-  getById(id: string) {
-    return this.http.get<IUser>(`${this.entityUrl}/${id}`)
+  updatePassword(data: { currentPassword: string, newPassword: string }) {
+    return this.http.put<IUser>(`${this.entityUrl}/update-password`, data)
     .pipe(catchError(error => this.doError(error)));
+  }
+
+  logout() {
+    this.utilsService.clearStorage(StorageKeyEnum.ACTIVE);
+    this.utilsService.clearStorage(StorageKeyEnum.TOKEN);
+    this.sessionData.userSub$.next(null);
+    this.router.navigate(['public', 'login']);
   }
 }

@@ -5,6 +5,9 @@ import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { ToastModule } from "primeng/toast";
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MenuModule } from 'primeng/menu';
+import { DialogModule } from 'primeng/dialog';
+import { TabViewModule } from "primeng/tabview";
 
 @NgModule({
   declarations: [],
@@ -14,14 +17,20 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     ButtonModule,
     DividerModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MenuModule,
+    DialogModule,
+    TabViewModule
   ],
   exports: [
     InputTextModule,
     ButtonModule,
     DividerModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    MenuModule,
+    DialogModule,
+    TabViewModule
   ]
 })
 export class PrimengModule { }

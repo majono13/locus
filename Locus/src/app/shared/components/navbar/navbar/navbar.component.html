@@ -1,3 +1,31 @@
 <nav>
-    <app-public-nav [currentUser]="user" (onMenuClick)="emitOnMenuClick($event)"></app-public-nav>
+    <div class="nav">
+        <div class="img pointer" routerLink="/public" routerLinkActive="active">
+            <img src="../../../../../assets/images/logo.svg" alt="Logo Locus">
+        </div>
+        <div class="navbar-items" *ngIf="!isMobile">
+            <div routerLink="/public/login" class="pointer item" routerLinkActive="active" *ngIf="!user">Entrar</div>
+    
+            <div class="pointer item d-flex align-items-center" *ngIf="user" (click)="menu.toggle($event)">
+                <span>{{ user?.name }}</span>
+                <i class="pi pi-chevron-down pl-2"></i>
+            </div>
+        </div>
+    
+        <div *ngIf="isMobile" class="d-flex align-items-center">
+            <div class="user pointer" (click)="menu.toggle($event)">
+                <i class="pi pi-user"></i>
+            </div>
+            <div class="pointer menu-div" (click)="handleVisibilityMenu()">
+                <div class="menu-icon" [ngClass]="{'menu-icon-open': menuOpen}"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <app-public-nav [currentUser]="user" (onMenuClick)="emitOnMenuClick($event)" [userName]="user?.name" 
+    (openOptions)="menu.toggle($event)"></app-public-nav> -->
 </nav>
+
+<p-menu #menu [model]="items" [popup]="true"></p-menu>
+
+<app-account [visible]="showDialogAccount" (close)="handleVisibilityAccountModal()" *ngIf="showDialogAccount"></app-account>

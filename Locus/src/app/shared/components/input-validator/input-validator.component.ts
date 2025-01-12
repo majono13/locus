@@ -18,15 +18,18 @@ export class InputValidatorComponent implements OnInit, AfterContentInit {
       if (this.input.errors == null) return null;
       else {
         var key = Object.keys(this.input.errors)[0];
+        const error = this.input.errors[key];
         switch (key) {
           case 'required':
             return 'O campo é obrigatório';
           case 'minlength':
-            return 'Campo deve ter no mínimo 3 caracteres';
+            return `Campo deve conter no mínimo ${error.requiredLength} caracteres`;
           case 'maxlength':
-            return 'Campo deve ter no máximo 100 caracteres';
+            return `Campo deve conter no máximo ${error.requiredLength} caracteres`;
           case 'email':
             return 'Formato de e-mail inválido.';
+          case 'passwordMismatch':
+            return 'As senhas devem ser iguais';
           default: return 'Campo inválido.'
         }
       }

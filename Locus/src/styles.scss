@@ -30,47 +30,6 @@ body {
     overflow-x: hidden;
 }
 
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    .img {
-        width: 40px;
-        img {
-            max-width: 100%;
-        }
-    }
-    .navbar-items {
-        display: flex !important;
-        justify-content: flex-end !important;
-        align-items: center;
-        height: 100%;
-        
-        .item {
-            position: relative;
-            &::after {
-                position: absolute;
-                content: "";
-                background: var(--text-color);
-                width: 0;
-                height: 1px;
-                bottom: 0;
-                left: 0;
-                transition: 0.5s;
-            }
-    
-            &:hover::after {
-                width: 100%;
-            }
-        }
-
-        .active::after {
-            width: 100%;
-        }
-    }
-}
-
 .pointer {
     cursor: pointer;
 }
@@ -126,6 +85,11 @@ body {
 .ml-3 {
     margin-left: 1rem;
 }
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
 
 .mt-2 {
     margin-top: 0.5rem;
