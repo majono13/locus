@@ -82,7 +82,7 @@ namespace Locus.Application.Services.User
 
             if (user != null)
             {
-                result.Errors.Add(new FluentValidation.Results.ValidationFailure("", ExceptionsMessages.EMAIL_REGISTERED));
+                result.Errors.Add(new ValidationFailure("", ExceptionsMessages.EMAIL_REGISTERED));
             }
         }
 
@@ -115,6 +115,46 @@ namespace Locus.Application.Services.User
             var user = await _userRepository.GetById(id);
 
             return _mapper.Map<ResponseUserJson>(user);
+        }
+
+        public async Task<ResponseUserJson> UpdatePassword(UpdatePasswordJson request)
+        {
+            await ValidateNewPassword(request);
+            var newPasswordEncripted = _passwordEncripter.Encrypt(request.NewPassword);
+
+            var response = await _userRepository.UpdatePassword(_userSession!.User.Id, newPasswordEncripted);
+            await _unitOfWork.Commit();
+
+            return _mapper.Map<ResponseUserJson>(response);
+        }
+
+        private async Task ValidateNewPassword(UpdatePasswordJson request)
+        {
+            var onErrorValidation = new OnErrorValidation();
+
+            var validator = new PasswordValidator();
+
+            var result = validator.Validate(request);
+
+            if (!result.IsValid)
+            {
+                onErrorValidation.throwIfValidationError(result);
+            }
+
+            var user = await _userRepository.GetById(_userSession!.User.Id);
+            var encriptedCurrentPassword = _passwordEncripter.Encrypt(request.CurrentPassword);
+            var encriptedNewPassword = _passwordEncripter.Encrypt(request.NewPassword);
+
+            if (encriptedCurrentPassword != user!.Password)
+            {
+                result.Errors.Add(new ValidationFailure("", ExceptionsMessages.INVALID_PASSWORD));
+            } 
+            else if (encriptedNewPassword == user!.Password)
+            {
+                result.Errors.Add(new ValidationFailure("", ExceptionsMessages.NEW_PASSWORD_EQUAL));
+            }
+
+            onErrorValidation.throwIfValidationError(result);
         }
     }
 }

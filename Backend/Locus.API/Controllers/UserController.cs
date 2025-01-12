@@ -33,6 +33,15 @@ namespace Locus.API.Controllers
             return Ok(result);
         }
 
+        [HttpPut("update-password")]
+        [ProducesResponseType(typeof(ResponseUserJson), StatusCodes.Status200OK)]
+        [AuthenticatedUser]
+        public async Task<IActionResult> UpdatePassword([FromServices] IUserService userService, [FromBody] UpdatePasswordJson request)
+        {
+            var result = await userService.UpdatePassword(request);
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ResponseUserJson), StatusCodes.Status200OK)]
         [AuthenticatedUser]

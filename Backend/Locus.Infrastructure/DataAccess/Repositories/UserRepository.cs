@@ -51,5 +51,19 @@ namespace Locus.Infrastructure.DataAccess.Repositories
             return currentUser!;
 
         }
+
+        public async Task<User> UpdatePassword(Guid userId, string password)
+        {
+            var currentUser = await GetById(userId);
+
+            if (currentUser != null) 
+            {
+                currentUser.Password = password;
+
+                _dbContext.Users.Update(currentUser);
+            }
+            
+            return currentUser!;
+        }
     }
 }

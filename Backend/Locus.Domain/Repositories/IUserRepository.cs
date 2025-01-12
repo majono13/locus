@@ -9,5 +9,6 @@ namespace Locus.Domain.Repositories
         public Task<User?> GetUserByEmailAndPassword(string email, string password);
         public Task<User?> GetById(Guid id);
         public Task<User> Update (Guid userId, User user);
+        public Task<User> UpdatePassword(Guid userId, string password);
     }
 }
