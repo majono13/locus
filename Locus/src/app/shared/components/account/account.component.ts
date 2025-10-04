@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { DIALOG_CONFIG } from 'src/app/core/consts/default-dialog-config.const';
 import { UtilsService } from '../../services/utils.service';
 import { StorageKeyEnum } from 'src/app/core/enums/storage-keys.enum';
@@ -21,8 +21,8 @@ export class AccountComponent implements OnInit, OnDestroy {
   @Input() visible: boolean = true;
   @Output() close = new EventEmitter();
 
-  formInfo: FormGroup;
-  formPassword: FormGroup;
+  formInfo: UntypedFormGroup;
+  formPassword: UntypedFormGroup;
   destroy$ = new Subject<void>();
   loading: boolean = false;
   activeIndex: number = 0;
@@ -31,7 +31,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   readonly tabs = AccountTabsEnum;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private utilsService: UtilsService,
     private userService: UserService,
     private passwordValidatorService: PasswordValidatorService
@@ -129,7 +129,7 @@ export class AccountComponent implements OnInit, OnDestroy {
   }
 
   verifyForm(index: number) {
-    let form: FormGroup;
+    let form: UntypedFormGroup;
     let tabName = '';
     const activeIndexCopy = this.activeIndex;
 
@@ -153,7 +153,7 @@ export class AccountComponent implements OnInit, OnDestroy {
     }
   }
 
-  private resetForm(form: FormGroup, isInnfoForm: boolean) {
+  private resetForm(form: UntypedFormGroup, isInnfoForm: boolean) {
     form.reset();
 
     if (isInnfoForm) this.setInfo();
