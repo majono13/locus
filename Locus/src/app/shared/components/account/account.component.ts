@@ -1,19 +1,24 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DIALOG_CONFIG } from 'src/app/core/consts/default-dialog-config.const';
 import { UtilsService } from '../../services/utils.service';
 import { StorageKeyEnum } from 'src/app/core/enums/storage-keys.enum';
 import { UserService } from 'src/app/core/entities/user/User.service';
 import { IUser } from 'src/app/core/models/user/user.model';
 import { Subject, firstValueFrom, takeUntil } from 'rxjs';
-import { TabView } from 'primeng/tabview';
+import { TabView, TabViewModule } from 'primeng/tabview';
 import { AccountTabsEnum } from 'src/app/core/enums/account-tabs.enum';
 import { PasswordValidatorService } from '../../validators/password-validator.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputValidatorComponent } from '../input-validator/input-validator.component';
+import { GenericModalComponent } from '../generic-modal/generic-modal.component';
 
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+    selector: 'app-account',
+    templateUrl: './account.component.html',
+    styleUrls: ['./account.component.scss'],
+    standalone: true,
+    imports: [GenericModalComponent, TabViewModule, FormsModule, ReactiveFormsModule, InputValidatorComponent, InputTextModule]
 })
 export class AccountComponent implements OnInit, OnDestroy {
 

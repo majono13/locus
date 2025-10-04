@@ -7,13 +7,11 @@ import { PropertiesComponent } from './properties/properties.component';
 
 
 @NgModule({
-  declarations: [
-    PropertiesComponent
-  ],
-  imports: [
-    CommonModule,
-    UserCommunRoutingModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        UserCommunRoutingModule,
+        SharedModule,
+        PropertiesComponent
+    ]
 })
 export class UserCommunModule { }

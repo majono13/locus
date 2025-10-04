@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MENU_OPTIONS, MenuOptions } from 'src/app/core/consts/menu-options.const';
+import { NgFor, NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
+    standalone: true,
+    imports: [NgFor, NgClass, NgIf]
 })
 export class SidebarComponent implements OnInit {
 

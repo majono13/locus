@@ -6,11 +6,17 @@ import { IUser } from 'src/app/core/models/user/user.model';
 import { ResponsiveService } from 'src/app/shared/services/responsive.service';
 import { SessionDataService } from 'src/app/shared/services/sessionData.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
+import { AccountComponent } from '../../account/account.component';
+import { MenuModule } from 'primeng/menu';
+import { NgIf, NgClass } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    standalone: true,
+    imports: [RouterLink, RouterLinkActive, NgIf, NgClass, MenuModule, AccountComponent]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 

@@ -11,8 +11,8 @@ describe('GenericModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GenericModalComponent ]
-    })
+    imports: [GenericModalComponent]
+})
     .compileComponents();
   }));
 

@@ -1,9 +1,15 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Button } from 'primeng/button';
+import { NgIf } from '@angular/common';
+import { PrimeTemplate } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
-  selector: 'app-generic-modal',
-  templateUrl: './generic-modal.component.html',
-  styleUrls: ['./generic-modal.component.scss']
+    selector: 'app-generic-modal',
+    templateUrl: './generic-modal.component.html',
+    styleUrls: ['./generic-modal.component.scss'],
+    standalone: true,
+    imports: [DialogModule, PrimeTemplate, NgIf, Button]
 })
 export class GenericModalComponent implements OnInit {
 

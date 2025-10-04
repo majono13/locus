@@ -11,8 +11,8 @@ describe('PropertiesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PropertiesComponent ]
-    })
+    imports: [PropertiesComponent]
+})
     .compileComponents();
   }));
 

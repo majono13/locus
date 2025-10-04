@@ -12,30 +12,28 @@ import { GenericModalComponent } from './components/generic-modal/generic-modal.
 
 
 @NgModule({
-  declarations: [
-    InputValidatorComponent,
-    HomeComponent,
-    SidebarComponent,
-    AccountComponent,
-    GenericModalComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    PrimengModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  exports: [
-    RouterModule,
-    PrimengModule,
-    FormsModule,
-    ReactiveFormsModule,
-    InputValidatorComponent,
-    HomeComponent,
-    SidebarComponent,
-    AccountComponent,
-    GenericModalComponent
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        PrimengModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InputValidatorComponent,
+        HomeComponent,
+        SidebarComponent,
+        AccountComponent,
+        GenericModalComponent,
+    ],
+    exports: [
+        RouterModule,
+        PrimengModule,
+        FormsModule,
+        ReactiveFormsModule,
+        InputValidatorComponent,
+        HomeComponent,
+        SidebarComponent,
+        AccountComponent,
+        GenericModalComponent
+    ]
 })
 export class SharedModule { }

@@ -7,17 +7,15 @@ import { SharedModule } from "../../shared.module";
 
 
 @NgModule({
-  declarations: [
-    NavbarComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    PrimengModule,
-    SharedModule
-],
-  exports: [
-    NavbarComponent
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        PrimengModule,
+        SharedModule,
+        NavbarComponent
+    ],
+    exports: [
+        NavbarComponent
+    ]
 })
 export class NavbarModule { }

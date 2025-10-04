@@ -10,16 +10,14 @@ import { LoginComponent } from './auth/login/login.component';
 
 
 @NgModule({
-  declarations: [
-    CatalogComponent,
-    RegisterComponent,
-    AuthComponent,
-    LoginComponent
-  ],
-  imports: [
-    CommonModule,
-    PublicRoutingModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        PublicRoutingModule,
+        SharedModule,
+        CatalogComponent,
+        RegisterComponent,
+        AuthComponent,
+        LoginComponent
+    ]
 })
 export class PublicModule { }

@@ -1,10 +1,13 @@
 import { AfterContentInit, Component, ContentChild, OnInit } from '@angular/core';
 import { FormControlName, NgModel } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'input-validator',
-  templateUrl: './input-validator.component.html',
-  styleUrls: ['./input-validator.component.scss']
+    selector: 'input-validator',
+    templateUrl: './input-validator.component.html',
+    styleUrls: ['./input-validator.component.scss'],
+    standalone: true,
+    imports: [NgIf]
 })
 export class InputValidatorComponent implements OnInit, AfterContentInit {
 

@@ -11,8 +11,8 @@ describe('InputValidatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputValidatorComponent ]
-    })
+    imports: [InputValidatorComponent]
+})
     .compileComponents();
   }));
 
