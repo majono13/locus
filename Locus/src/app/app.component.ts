@@ -1,13 +1,16 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { ResponsiveService } from './shared/services/responsive.service';
 import { SessionDataService } from './shared/services/sessionData.service';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: true,
+    imports: [NgIf, NgClass, RouterOutlet]
 })
 export class AppComponent implements OnInit {
 
