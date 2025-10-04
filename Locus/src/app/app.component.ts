@@ -4,13 +4,17 @@ import { filter, map } from 'rxjs';
 import { ResponsiveService } from './shared/services/responsive.service';
 import { SessionDataService } from './shared/services/sessionData.service';
 import { NgIf, NgClass } from '@angular/common';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { NavbarComponent } from './shared/components/navbar/navbar/navbar.component';
+import { ToastModule } from 'primeng/toast';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [NgIf, NgClass, RouterOutlet]
+    imports: [NgIf, NgClass, RouterOutlet, ConfirmDialogModule, NavbarComponent, ToastModule, SidebarComponent]
 })
 export class AppComponent implements OnInit {
 
