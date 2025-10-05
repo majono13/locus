@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
@@ -20,6 +20,8 @@ import { InputValidatorComponent } from '../../../shared/components/input-valida
     imports: [FormsModule, ReactiveFormsModule, InputValidatorComponent, InputTextModule, ButtonDirective, DividerModule]
 })
 export class LoginComponent implements OnInit {
+
+  @Output() onCreateAccount = new EventEmitter();
 
   form: UntypedFormGroup;
   private destroy$ = new Subject<void>();
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
       const form = this.form.getRawValue();
       this.userService.login(form).pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (response) => this.doAuthenticated(response)
+        next: (response) => this.userService.doAuthenticated(response)
       });
       ;
     } else {
@@ -52,18 +54,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-    private doAuthenticated(loginResponse: ILoginResponse) {
-    this.utilsService.setStorage(StorageKeyEnum.TOKEN, loginResponse.token);
-
-    this.userService.getById(loginResponse.id)
-    .pipe(takeUntil(this.destroy$))
-    .subscribe({
-      next: (response) => this.setUserSession(response)
-    });
-  }
-
-  private setUserSession(user: IUser) {
-    this.utilsService.setStorage(StorageKeyEnum.ACTIVE, JSON.stringify(user));
-    this.router.navigate(['public', 'commun']);
+  createAccount() {
+    this.onCreateAccount.emit();
   }
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 import { environment } from 'src/environments/environment';
 
@@ -37,6 +37,10 @@ constructor(
     return throwError(() => new Error("Mensagem de erro!"));
   }
 
+  create(entity: T) {
+    return this.http.post<T>(`${this.entityUrl}`, entity)
+    .pipe(catchError(error => this.doError(error))) as Observable<T>;
+  }
 
 
 }

@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .sidebar {
     position: fixed;
     bottom: 0;
@@ -28,16 +30,15 @@
             background: var(--hoverColor);
         }
     }
-}
 
-@media(max-width: 992px) {
-    .sidebar {
+    @include screenMedium {
         animation: entranceAnimation 0.3s ease-in forwards;
         width: 100vw;
     }
-
-    .close-sidebar {
-        animation: exitAnimation 0.3s ease-in forwards;
+}
+.close-sidebar {
+    @include screenMedium {
+         animation: exitAnimation 0.3s ease-in forwards;
     }
 }
 

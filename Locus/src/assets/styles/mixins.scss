@@ -1,0 +1,62 @@
+@use "./variables.scss" as *;
+
+
+@mixin screenSmall {
+  @media only screen and (max-width: 540px) {
+    @content;
+  }
+}
+
+@mixin screenMedium2 {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin screenMedium {
+  @media only screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin screenLarge {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin screenExtraLarge {
+  @media only screen and (max-width: 1500px) {
+    @content;
+  }
+}
+
+@mixin entrance($name, $from: 200px, $to: 0) {
+  @keyframes #{$name} {
+    from {
+      transform: translateX($from);
+    }
+
+    to {
+      transform: translateX($to);
+    }
+  }
+}
+
+
+//Scroll
+// @mixin scroll {
+//   ::-webkit-scrollbar {
+//     width: 3px;
+//   }
+
+//   ::-webkit-scrollbar-thumb {
+//     background: linear-gradient(to bottom, $primary-400, $primary-300);
+//     border-radius: 5px;
+//   }
+
+//   ::-webkit-scrollbar-thumb:hover {
+//     background: linear-gradient(to bottom, $primary-400, $primary-300);
+//   }
+//}
+

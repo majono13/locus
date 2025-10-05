@@ -3,7 +3,7 @@ import { ILogin } from '../../models/user/login.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ILoginResponse } from '../../models/user/login-response.model';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, firstValueFrom, throwError } from 'rxjs';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 import { IUser } from '../../models/user/user.model';
 import { EntityService } from '../entity.service';
@@ -45,5 +45,21 @@ constructor(
     this.utilsService.clearStorage(StorageKeyEnum.TOKEN);
     this.sessionData.userSub$.next(null);
     this.router.navigate(['public', 'login']);
+  }
+
+  createUser(entity: IUser): Observable<ILoginResponse> {
+    return this.http.post<ILoginResponse>(`${this.entityUrl}`, entity)
+    .pipe(catchError(error => this.doError(error))) as Observable<ILoginResponse>;
+  }
+
+  async doAuthenticated(loginResponse: ILoginResponse) {
+    this.utilsService.setStorage(StorageKeyEnum.TOKEN, loginResponse.token);
+    const user = await firstValueFrom(this.getById(loginResponse.id));
+    this.setUserSession(user)
+  }
+
+  private setUserSession(user: IUser) {
+    this.utilsService.setStorage(StorageKeyEnum.ACTIVE, JSON.stringify(user));
+    this.router.navigate(['public', 'commun']);
   }
 }

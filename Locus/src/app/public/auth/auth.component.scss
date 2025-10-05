@@ -1,3 +1,9 @@
+@import 'mixins';
+
+@include entrance(slide-right, 200px, 0);
+@include entrance(slide-left, -200px, 0);
+
+$animationTime: 0.6s;
 
 .image {
     background: var(--light);
@@ -7,6 +13,10 @@
     justify-content: center;
     img {
         max-width: 90%;
+    }
+
+    @include screenMedium2 {
+        display: none;
     }
 }
 
@@ -20,18 +30,31 @@
     .custom-border {
         margin-right: 0.1rem;
         padding: 1rem;
+        overflow-x: hidden;
+        @include screenMedium2 {
+            border: none;
+        }
+    }
+    .login {
+        animation: slide-left $animationTime ease-out forwards;
+    }
+    
+    .register {
+        animation: slide-right $animationTime ease-out forwards;
     }
 }
 
-@media(max-width: 767px) {
+
+
+@include screenMedium2 {
     
-.image {
+    .image {
         min-height: 40vh;
     }
-
+    
     .form-content {
         min-height: 40vh;
-
+    
         form {
             margin: 0;
         }

@@ -1,0 +1,49 @@
+<form class="row" [formGroup]="form">
+    <h3 class="col-12 pb-3">Nova conta</h3>
+
+    <div class="col-12">
+        <input-validator>
+            <label for="name">Nome</label>
+            <input type="text" name="name" pInputText class="w-100 mt-2" formControlName="name">
+        </input-validator>
+    </div>
+
+    <div class="col-12 mt-3">
+        <input-validator>
+            <label for="email">Email</label>
+            <input type="email" name="email" pInputText class="w-100 mt-2" formControlName="email">
+        </input-validator>
+    </div>
+
+    <div class="col-12 mt-3">
+        <input-validator>
+            <label for="password">Senha</label>
+            <p-iconField iconPosition="right">
+                <p-inputIcon [styleClass]="!inputsPassword[0] ? 'pi pi-eye' : 'pi pi-eye-slash'" class="pointer" (click)="showPassword(0, inputPassword)" />
+                <input type="password" name="password" pInputText class="w-100 mt-2" formControlName="password" #inputPassword>
+            </p-iconField>
+        </input-validator>
+    </div>
+
+    <div class="col-12 mt-3">
+        <input-validator>
+            <label for="confirmPassword">Confirme a senha</label>
+            <p-iconField iconPosition="right">
+                <p-inputIcon [styleClass]="!inputsPassword[1] ? 'pi pi-eye' : 'pi pi-eye-slash'" class="pointer" (click)="showPassword(1, inputConfirm)" />
+                <input type="password" name="confirmPassword" pInputText class="w-100 mt-2" formControlName="confirmPassword" #inputConfirm>
+            </p-iconField>
+        </input-validator>
+    </div>
+
+    <div class="col-12 mt-4">
+        <button pButton label="Criar conta" class="w-100" (click)="onSave()" [icon]="onLoading ? 'pi pi-spin pi-spinner' : ''"
+        [disabled]="onLoading"></button>
+    </div>
+
+    <p-divider></p-divider>
+
+    <div class="col-12 mt-3 d-flex align-items-center flex-wrap">
+        <span class="text mr-2">Já possui uma conta?</span>
+        <a class="button-link pointer" (click)="backToLogin()">Entrar</a>
+    </div>
+</form>

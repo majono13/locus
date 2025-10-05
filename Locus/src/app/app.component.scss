@@ -1,3 +1,5 @@
+@import 'mixins';
+
 .main {
     background: var(--primaryColor);
     min-height: calc(100vh - 6rem);
@@ -12,11 +14,7 @@
     margin-left: 266px;
 }
 
-@media(max-width:992px) {
-    .content {
-        display: flex;
-        justify-content: center;
-    }
+@include screenMedium {
     .main, .with-siderbar {
         width: 100vw;
         margin: 0 0 0 0;

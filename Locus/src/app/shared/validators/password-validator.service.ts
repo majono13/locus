@@ -10,22 +10,14 @@ constructor() { }
 
   confirmPasswordValidator(matchTo: string): (control: AbstractControl) => ValidationErrors | null {
     return (control: AbstractControl): ValidationErrors | null => {
-      const formGroup = control.parent;
-      if (!formGroup) return null; // Certifique-se de que o controle tem um pai
-  
-      const password = formGroup.get(matchTo)?.value;
-      const confirmPassword = control.value;
-  
-      if (password !== confirmPassword) {
-        return { passwordMismatch: true };
-      }
+      if (!control.parent) return null;
 
-      if (formGroup.get(matchTo).hasError('passwordMismatch')) {
-        formGroup.get(matchTo).setErrors(null);
-      }
-  
-      return null;
+      const password = control.parent.get(matchTo)?.value;
+      const confirmPassword = control.value;
+
+      if (!password || !confirmPassword) return null;
+
+      return password === confirmPassword ? null : { passwordMismatch: true };
     };
   }
-
 }

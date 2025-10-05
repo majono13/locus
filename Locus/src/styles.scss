@@ -34,16 +34,6 @@ body {
     cursor: pointer;
 }
 
-.register {
-    .form-content {
-
-        .p-inputtext {
-            background: var(--whiteColor) !important;
-            color: var(--darkText) !important;
-        }
-    }
-}
-
 .p-button {
     background: var(--light) !important;
     border-color: var(--light) !important;
@@ -68,13 +58,29 @@ body {
 }
 
 .button-link {
-    color: var(--linkColor) !important;
-    font-weight: 500;
-    text-decoration: none;
-    transition: 0.3s;
-    border-bottom: 1px solid transparent;
-    padding-left: 0.2rem;
-    &:hover {
-        border-color: var(--linkColor);
-    }
+  position: relative;
+  color: var(--linkColor) !important;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: var(--linkColor);
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.p-input-icon {
+    color: var(--text-color)
 }
