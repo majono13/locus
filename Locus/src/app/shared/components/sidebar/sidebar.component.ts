@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MENU_OPTIONS, MenuOptions } from 'src/app/core/consts/menu-options.const';
 import { NgFor, NgClass, NgIf } from '@angular/common';
@@ -11,6 +11,8 @@ import { NgFor, NgClass, NgIf } from '@angular/common';
     imports: [NgFor, NgClass, NgIf]
 })
 export class SidebarComponent implements OnInit {
+
+  @Input({ required: true }) onCollapse: boolean = false;
 
   menu = MENU_OPTIONS;
   expandedItemId: string;

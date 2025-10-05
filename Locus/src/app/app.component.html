@@ -1,6 +1,6 @@
 <app-navbar (onMenuClick)="handleVisibilitySidebar()"></app-navbar>
 <div>
-  <app-sidebar *ngIf="showSidebar"></app-sidebar>
+  <app-sidebar *ngIf="showSidebar" [onCollapse]="onCollapse"></app-sidebar>
     <div class="content">
       <section [ngClass]="{'main': isLogged, 'with-siderbar': showSidebar}">
         <router-outlet></router-outlet>

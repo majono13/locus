@@ -4,6 +4,7 @@
     height: calc(100vh - 4rem);
     background: var(--primaryColor);
     width: 250px;
+    z-index: 999;
 
     .menu {
         padding-top: 1rem;
@@ -34,6 +35,10 @@
         animation: entranceAnimation 0.3s ease-in forwards;
         width: 100vw;
     }
+
+    .close-sidebar {
+        animation: exitAnimation 0.3s ease-in forwards;
+    }
 }
 
 @keyframes opacityAnimation {
@@ -47,9 +52,18 @@
 
 @keyframes entranceAnimation {
     from {
-        transform: translateX(-200px);
+        transform: translateX(-500px);
     }
     to {
         transform: translateX(0px);
+    }
+}
+
+@keyframes exitAnimation {
+    from {
+        transform: translateX(0px);
+    }
+    to {
+        transform: translateX(-800px);
     }
 }

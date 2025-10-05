@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   title = 'Locus';
   showSidebar: boolean = false;
   isLogged: boolean = false;
+  onCollapse: boolean = false;
 
   constructor(
     private router: Router,
@@ -57,7 +58,15 @@ export class AppComponent implements OnInit {
   }
 
   handleVisibilitySidebar() {
-    this.showSidebar = !this.showSidebar;
+    if (!this.showSidebar) this.showSidebar = true;
+    else {
+      this.onCollapse = true;
+
+      setTimeout(() => {
+        this.onCollapse = false;
+        this.showSidebar = false;
+      }, 350);
+    }
   }
 
   private checkSession() {
