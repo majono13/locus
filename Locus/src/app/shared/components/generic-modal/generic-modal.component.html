@@ -1,27 +1,23 @@
 <p-dialog 
-[(visible)]="visible"
 [draggable]="false" 
 [closeOnEscape]="false" 
+[(visible)]="visible" 
 [header]="header"
 [modal]="true"
 [style]="style"
 (onHide)="emitClose()"
 (visibleChange)="emitVisibleChange()"
-[closable]="false">
+[closable]="false"
+[class]="modalStyle">
 
-  <ng-content></ng-content>
+<ng-content></ng-content>
 
-  <ng-template pTemplate="header">
-    <div class="d-flex justify-content-between">
-      <h4>{{ header }}</h4>
-      <i class="close-icon pi pi-times" (click)="emitClose()"></i>
-    </div>
-  </ng-template>
-
-  <ng-template pTemplate="footer" class="mt-3">
-    <p-button *ngIf="showCancelButton" [label]="cancelLabel" (click)="emitClose()" [styleClass]="cancelButtonStyleClass" [disabled]="onLoading"></p-button>
-    <p-button *ngIf="showConfirmButton" [label]="confirmLabel" (onClick)="emitConfirm()" [styleClass]="confirmButtonStyleClass" [disabled]="onLoading"
-    [icon]="onLoading ? 'pi pi-spin pi-spinner' : ''" iconPos="right"></p-button>
-  </ng-template>
-
+<ng-template pTemplate="header">
+  <h4>{{ header }}</h4>
+</ng-template> 
+<ng-template pTemplate="footer" class="mt-3">
+  <p-button class="mr-3" *ngIf="showCancelButton" [label]="cancelLabel" (click)="emitClose()" [styleClass]="cancelButtonStyleClass" [disabled]="onLoading"></p-button>
+  <p-button *ngIf="showConfirmButton" [label]="confirmLabel" (onClick)="emitConfirm()" [styleClass]="confirmButtonStyleClass" [disabled]="onLoading"
+  [icon]="onLoading ? 'pi pi-spin pi-spinner' : ''"></p-button>
+</ng-template>
 </p-dialog>

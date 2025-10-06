@@ -13,12 +13,18 @@
         </div>
     
         <div *ngIf="isMobile" class="d-flex align-items-center">
-            <div class="user pointer" (click)="menu.toggle($event)">
-                <i class="pi pi-user"></i>
-            </div>
-            <div class="pointer menu-div" (click)="handleVisibilityMenu()">
-                <div class="menu-icon" [ngClass]="{'menu-icon-open': menuOpen}"></div>
-            </div>
+            <ng-container *ngIf="user">
+                <div class="user pointer" (click)="menu.toggle($event)">
+                    <i class="pi pi-user"></i>
+                </div>
+                <div class="pointer menu-div" (click)="handleVisibilityMenu()">
+                    <div class="menu-icon" [ngClass]="{'menu-icon-open': menuOpen}"></div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="!user">
+                <div routerLink="/public/login" class="pointer item" routerLinkActive="active" *ngIf="!user">Entrar</div>
+            </ng-container>
         </div>
     </div>
 

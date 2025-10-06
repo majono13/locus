@@ -84,3 +84,27 @@ body {
 .p-input-icon {
     color: var(--text-color)
 }
+
+.modal-medium .p-dialog {
+    width: 50vw;
+    max-width: 600px;
+
+}
+
+.modal-small .p-dialog {
+  width: 20vw;
+
+}
+
+.modal-large .p-dialog {
+  width: 80vw;
+  max-width: 1200px;
+}
+
+@media only screen and (max-width: 767px) {
+    .modal-large .p-dialog, 
+    .modal-small .p-dialog,
+    .modal-medium .p-dialog {
+        width: 90vw !important;
+    }
+}
